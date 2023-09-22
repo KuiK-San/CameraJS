@@ -1,5 +1,5 @@
 var video = document.querySelector('#camera')
-const specs = {video:{width:320}}
+const specs = {video:true}
 
 const startButton = document.getElementById('startCamera');
 
@@ -19,9 +19,24 @@ document.querySelector('#tirarFoto').addEventListener('click', () =>{
     canvas.width = video.videoWidth;
     var context = canvas.getContext('2d');
     context.drawImage(video, 0, 0);
-    var link = document.createElement('a');
-    link.download = 'foto.png';
-    link.href = canvas.toDataURL();
-    link.textContent = 'Clique para baixar a imagem';
-    document.body.appendChild(link);
+    var envia = document.querySelector('#enviarFoto');
+    var enviaBtn = document.querySelector('#enviarFotoBtn');
+    enviaBtn.style.display = 'block'
+    imgData = canvas.toDataURL("image/png");
+
+    
+})
+
+document.querySelector('#enviarFotoBtn').addEventListener('click', (button) => {
+    fetch('/salvar-imagem', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({imgData}),
+    })
+    .then(response => response.text())
+    .catch(error => {
+        console.error('Erro ao salvar a imagem', error);
+    })
 })
