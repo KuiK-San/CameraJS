@@ -9,21 +9,19 @@
     <h1>Abra a Câmera do Celular</h1>
     <video id="camera" autoplay></video>
     <button id="startCamera">Iniciar Câmera</button>
-    <p></p>
 
     <script>
         const camera = document.getElementById('camera');
         const startButton = document.getElementById('startCamera');
-        
 
         startButton.addEventListener('click', async () => {
-            navigator.permissions.query({name: "camera"}).then((result) => {
-                document.querySelector('p').innerHTML = result.state
-                if(result.state === "prompt"){
-                    navigator.mediaDevices.getUserMedia({video:true})
-                }
-                
-            })
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                camera.srcObject = stream;
+                camera.play();
+            } catch (error) {
+                console.error('Erro ao iniciar a câmera:', error);
+            }
         });
     </script>
 </body>
