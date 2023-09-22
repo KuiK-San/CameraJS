@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify, render_template, url_for
+from werkzeug.serving import run_simple
 import os
 import base64
 import random
@@ -30,4 +31,6 @@ def salvar_imagem():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    certificado = './localhost.pem'
+    key = './localhost-key.pem'
+    app.run(host='0.0.0.0', debug=True)
