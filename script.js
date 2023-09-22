@@ -13,7 +13,7 @@ startButton.addEventListener('click', async () => {
     }
 });
 
-document.querySelector('button').addEventListener('click', () =>{
+document.querySelector('#tirarFoto').addEventListener('click', () =>{
     var canvas = document.querySelector('#imagem');
     canvas.height = video.videoHeight;
     canvas.width = video.videoWidth;
