@@ -8,21 +8,12 @@
 <body>
     <h1>Abra a Câmera do Celular</h1>
     <video id="camera" autoplay></video>
+    <canvas id="imagem"></canvas>
     <button id="startCamera">Iniciar Câmera</button>
+    <button id="tirarFoto">Tirar Foto</button>
 
     <script>
-        const camera = document.getElementById('camera');
-        const startButton = document.getElementById('startCamera');
-
-        startButton.addEventListener('click', async () => {
-            try {
-                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-                camera.srcObject = stream;
-                camera.play();
-            } catch (error) {
-                console.error('Erro ao iniciar a câmera:', error);
-            }
-        });
+        
     </script>
 </body>
 </html>
