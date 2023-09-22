@@ -14,7 +14,7 @@ startButton.addEventListener('click', async () => {
 });
 
 document.querySelector('#tirarFoto').addEventListener('click', () =>{
-    var canvas = document.querySelector('#imagem');
+    var canvas = document.querySelector('canvas');
     canvas.height = video.videoHeight;
     canvas.width = video.videoWidth;
     var context = canvas.getContext('2d');
