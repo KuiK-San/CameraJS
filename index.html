@@ -18,7 +18,7 @@
 
         startButton.addEventListener('click', async () => {
             navigator.permissions.query({name: "camera"}).then((result) => {
-                document.querySelector('p').innerHTML = result.state
+                showButtonToEnableLocalNews();
             })
         });
     </script>
